@@ -8,10 +8,11 @@
     { "id": "small", "label": "Klein" },
     { "id": "pointy", "label": "Puntig" }
   ],
-  "pattern": [
-    { "id": "none", "label": "Geen" },
-    { "id": "stripes", "label": "Strepen" }
-  ],
+ "pattern": [
+  { "id": "none", "label": "Geen" },
+  { "id": "stripes", "label": "Strepen" },
+  { "id": "dots", "label": "Stippen" }
+],
   "behavior": [
     { "id": "calm", "label": "Rustig" },
     { "id": "curious", "label": "Nieuwsgierig" }
