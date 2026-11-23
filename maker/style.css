@@ -484,11 +484,13 @@ button:focus-visible {
 pre:empty {
   display: none;
 }
+/* Stippen */
 .maker:has(#pattern-dots:checked) .fish-skin {
+  background-color: var(--body-color);
   background-image: radial-gradient(
     circle,
-    var(--pattern-color) 0 5px,
-    transparent 5.5px
+    var(--pattern-color) 3px,
+    transparent 3.5px
   );
-  background-size: 24px 24px;
+  background-size: 22px 22px;
 }
