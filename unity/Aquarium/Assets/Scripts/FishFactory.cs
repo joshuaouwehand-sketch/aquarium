@@ -112,6 +112,38 @@ switch (data.pattern)
         swimmer.behavior = data.behavior;
     }
 
+     // Tekent stippen op beide zichtbare kanten van het vissenlichaam.
+private void AddDots(GameObject fish, Vector3 bodySize, Color patternColor)
+{
+    float dotSize = bodySize.y * 0.16f;
+    float dotDepth = dotSize * 0.25f;
+
+    // Posities van de stippen, relatief aan het lichaam.
+    float[] xPositions = { -0.45f, 0f, 0.45f };
+    float[] yPositions = { -0.35f, 0.35f };
+
+    foreach (float nx in xPositions)
+    {
+        foreach (float ny in yPositions)
+        {
+            // Bereken waar het oppervlak van de bol zit.
+            float surfaceZ = (bodySize.z / 2f) *
+                Mathf.Sqrt(1f - nx * nx - ny * ny);
+
+            float x = nx * bodySize.x / 2f;
+            float y = ny * bodySize.y / 2f;
+
+            // Stippen aan beide kanten van de vis.
+            foreach (float side in new[] { -1f, 1f })
+            {
+                AddPart(fish, PrimitiveType.Sphere, "Dot",
+                    new Vector3(x, y, side * (surfaceZ + dotDepth * 0.35f)),
+                    new Vector3(dotSize, dotSize, dotDepth),
+                    Vector3.zero, patternColor);
+            }
+        }
+    }
+}
     // Maakt één onderdeel als kind van de vis, zonder collider, in de juiste kleur.
     private void AddPart(GameObject fish, PrimitiveType shape, string partName,
                          Vector3 position, Vector3 scale, Vector3 rotation, Color color)
