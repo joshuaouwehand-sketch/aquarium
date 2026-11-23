@@ -20,7 +20,7 @@ public class FishData
     public string maker;
     public string body;     // "round" of "long"
     public string fins;     // "small" of "pointy"
-    public string pattern;  // "none" of "stripes"
+    public string pattern;  // "none", "stripes" of "dots"
     public FishColors colors;
     public float size;
     public float speed;
