@@ -68,22 +68,30 @@ public class FishFactory : MonoBehaviour
             new Vector3(0f, bodySize.y / 2f, 0f),
             new Vector3(finScale * 0.7f, finScale * 0.7f, 0.04f), new Vector3(0f, 0f, 45f), finColor);
 
-        // Patroon: geen of strepen.
-        switch (data.pattern)
+       // Patroon: geen, strepen of stippen.
+switch (data.pattern)
+{
+    case "none":
+        break;
+
+    case "stripes":
+        foreach (float x in new[] { -0.2f, 0.1f })
         {
-            case "none": break;
-            case "stripes":
-                foreach (float x in new[] { -0.2f, 0.1f })
-                {
-                    AddPart(fish, PrimitiveType.Sphere, "Stripe",
-                        new Vector3(x * bodySize.x, 0f, 0f),
-                        new Vector3(0.1f * bodySize.x, bodySize.y, bodySize.z), Vector3.zero, patternColor);
-                }
-                break;
-            default:
-                Debug.LogWarning($"Vis '{data.id}': onbekend patroon '{data.pattern}', ik gebruik 'none'.");
-                break;
+            AddPart(fish, PrimitiveType.Sphere, "Stripe",
+                new Vector3(x * bodySize.x, 0f, 0f),
+                new Vector3(0.1f * bodySize.x, bodySize.y, bodySize.z),
+                Vector3.zero, patternColor);
         }
+        break;
+
+    case "dots":
+        AddDots(fish, bodySize, patternColor);
+        break;
+
+    default:
+        Debug.LogWarning($"Vis '{data.id}': onbekend patroon '{data.pattern}', ik gebruik 'none'.");
+        break;
+}
 
         // Ogen aan beide kanten.
         foreach (float side in new[] { -1f, 1f })
