@@ -484,3 +484,11 @@ button:focus-visible {
 pre:empty {
   display: none;
 }
+.maker:has(#pattern-dots:checked) .fish-skin {
+  background-image: radial-gradient(
+    circle,
+    var(--pattern-color) 0 5px,
+    transparent 5.5px
+  );
+  background-size: 24px 24px;
+}
